@@ -1,7 +1,7 @@
 ## **yolov8车牌识别算法，支持12种中文车牌类型**
 ## **在原作基础上添加了MySQL数据库支持,识别车牌后写入MySQL表格，带有时间戳。**
 ## **需要MySQL环境，将sqldata文件夹下record.py中数据库账户密码变量改为自己的即可** ##
-
+库名为plate，表名为licence plate
 
 
 
