@@ -1,4 +1,13 @@
 ## **yolov8车牌识别算法，支持12种中文车牌类型**
+## **在原作基础上添加了MySQL数据库支持,识别车牌后写入MySQL表格，带有时间戳。**
+## **需要MySQL环境，将sqldata文件夹下record.py中数据库账户密码变量改为自己的即可** ##
+
+
+
+
+
+
+
 
 #### **图片测试demo:**
 
@@ -42,6 +51,10 @@ python detect_rec_plate.py --detect_model weights/yolov8s.pt  --rec_model weight
 * [https://github.com/derronqi/yolov8-face](https://github.com/derronqi/yolov8-face)
 * [https://github.com/ultralytics/ultralytics](https://github.com/ultralytics/ultralytics)
 
-## 联系
 
-**有问题可以提issues 或者加qq群:769809695（新群） 837982567（已满） 询问**
+
+
+
+## 联系
+数据库支持 QQ2630111811
+
