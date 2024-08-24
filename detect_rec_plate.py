@@ -9,6 +9,8 @@ from ultralytics.nn.tasks import  attempt_load_weights
 from plate_recognition.plate_rec import get_plate_result,init_model,cv_imread
 from plate_recognition.double_plate_split_merge import get_split_merge
 from fonts.cv_puttext import cv2ImgAddText
+from sqldata.record import record
+
 
 def allFilePath(rootPath,allFIleList):# 读取文件夹内的文件，放到list
     fileList = os.listdir(rootPath)
@@ -192,7 +194,8 @@ def draw_result(orgimg,dict_list,is_color=False):   # 车牌结果画出来
         if len(result)>=6:
             orgimg=cv2ImgAddText(orgimg,result_p,rect_area[0],int(rect_area[1]-round(1.6*labelSize[0][1])),(0,0,0),21)
             # orgimg=cv2ImgAddText(orgimg,result_p,rect_area[0]-height_area,rect_area[1]-height_area-10,(0,255,0),height_area)
-               
+    
+    record(result_str)
     print(result_str)
     return orgimg
 
@@ -218,7 +221,7 @@ if __name__ == "__main__":
     #算参数量
     total = sum(p.numel() for p in detect_model.parameters())
     total_1 = sum(p.numel() for p in plate_rec_model.parameters())
-    print("yolov8 detect params: %.2fM,rec params: %.2fM" % (total/1e6,total_1/1e6))
+    #print("yolov8 detect params: %.2fM,rec params: %.2fM" % (total/1e6,total_1/1e6))
     
     detect_model.eval() 
     # print(detect_model)
@@ -243,5 +246,5 @@ if __name__ == "__main__":
         count+=1
         cv2.imwrite(save_img_path,ori_img)               #op
         # print(result_list)
-    print(f"sumTime time is {time.time()-time_begin} s, average pic time is {time_all/(len(file_list)-1)}")
+    #print(f"sumTime time is {time.time()-time_begin} s, average pic time is {time_all/(len(file_list)-1)}")
      
